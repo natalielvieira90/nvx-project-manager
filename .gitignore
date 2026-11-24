@@ -1,0 +1,10 @@
+node_modules/
+dist/
+data/*
+!data/.gitkeep
+backups/
+*.log
+.env
+.env.*
+dist-electron/
+instalador/

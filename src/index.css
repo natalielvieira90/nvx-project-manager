@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./assets/fontes/SpaceGrotesk-Variable.ttf') format('truetype');
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+/*
+ * Tema NVX Digital — cores, fontes e raios do Manual de Identidade Visual (v1.0, 2026),
+ * arquivo 02-IDENTIDADE-VISUAL/Cores/nvx-cores.css. Use sempre estes tokens, nunca cores soltas.
+ * Lima é destaque (botão principal, foco, dados, menu): nunca texto sobre fundo claro.
+ */
+@theme {
+  --font-sans: 'Inter Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-titulo: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+
+  /* Roxo Profundo (marca) e escala de interface */
+  --color-marca-950: #170e1f;
+  --color-marca-900: #24162f; /* Roxo Profundo — menu lateral, áreas de marca */
+  --color-marca-800: #33223e;
+  --color-marca-700: #453151;
+  --color-marca-600: #5d466a;
+
+  /* Lima Tecnológico (destaque) */
+  --color-lima-100: #f5fce1;
+  --color-lima-300: #e1f7a4;
+  --color-lima-500: #c9f05a;
+  --color-lima-600: #7f8e47;
+
+  /* Lavanda Escura (apoio) */
+  --color-lavanda-100: #efebf0;
+  --color-lavanda-200: #d9d1dc;
+  --color-lavanda-300: #bbadc1;
+  --color-lavanda-400: #9883a2;
+  --color-lavanda-500: #765a83;
+
+  /* Areia Clara */
+  --color-areia-50: #fbf8f5;
+  --color-areia-100: #f5f0e8;
+  --color-areia-200: #ebe4e0;
+  --color-areia-300: #ded5d6;
+
+  /*
+   * Papéis de destaque usados pelas telas:
+   * 300/400 = Lima (sobre fundo escuro); 500/600 = Lavanda (bordas e ícones sobre fundo claro);
+   * 700 = Roxo 600 (links e textos de ação sobre fundo claro, contraste AAA).
+   */
+  --color-destaque-300: #e1f7a4;
+  --color-destaque-400: #c9f05a;
+  --color-destaque-500: #765a83;
+  --color-destaque-600: #765a83;
+  --color-destaque-700: #5d466a;
+
+  /* Superfícies e texto */
+  --color-fundo: #f5f0e8; /* Areia Clara */
+  --color-superficie: #ffffff;
+  --color-borda: #ded5d6;
+  --color-texto: #171717; /* Preto Suave */
+  --color-texto-suave: #765a83; /* Lavanda Escura — 5,2:1 sobre Areia */
+
+  /* Séries dos gráficos: Roxo e Lavanda (manual), separação para daltonismo ΔE 20,8 */
+  --color-serie-dev: #5d466a;
+  --color-serie-suporte: #9883a2;
+  --color-grade: #ebe4e0;
+
+  /* Estados (sempre acompanhados de texto ou ícone) */
+  --color-sucesso: #08745a;
+  --color-alerta: #9a5b00;
+  --color-perigo: #c62828;
+
+  --radius-cartao: 8px;
+  --shadow-cartao: 0 1px 2px rgb(36 22 47 / 0.06), 0 8px 24px rgb(36 22 47 / 0.05);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-fundo text-texto font-sans;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  /* Números alinhados em tabelas e indicadores. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  /* Títulos em Space Grotesk 600, espaço entre letras −2% (manual). */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-titulo);
+    letter-spacing: -0.02em;
+  }
+  /* Foco visível: contorno Lima de 3 px (manual) com anel Roxo para contraste também em fundo claro. */
+  :focus-visible {
+    outline: 3px solid var(--color-lima-500);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-marca-900);
+  }
+  /* Rótulo de seção: Space Grotesk 500, caixa-alta, +22%. */
+  .rotulo {
+    font-family: var(--font-titulo);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  /* Números de destaque em Space Grotesk. */
+  .numero-destaque {
+    font-family: var(--font-titulo);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

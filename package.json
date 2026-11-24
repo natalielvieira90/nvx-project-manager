@@ -1,0 +1,90 @@
+{
+  "name": "nvx-project-manager",
+  "productName": "NVX Project Manager",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NVX Project Manager — gestão de projetos, horas, suporte e financeiro.",
+  "author": "NVX Digital",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "dist-electron/main.cjs",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "tsx watch server/index.ts",
+    "dev:web": "vite",
+    "app": "npm run build && electron .",
+    "build": "npm run build:web && npm run build:electron",
+    "build:web": "tsc -b && vite build",
+    "build:electron": "esbuild electron/main.ts --bundle --platform=node --format=cjs --target=node24 --external:electron --outfile=dist-electron/main.cjs --log-level=warning",
+    "instalador": "npm run build && electron-builder --win --x64",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "dados-exemplo": "tsx scripts/dados-exemplo.ts"
+  },
+  "build": {
+    "appId": "br.com.nvx.projectmanager",
+    "productName": "NVX Project Manager",
+    "copyright": "NVX — Software, Automação e Soluções Digitais",
+    "directories": {
+      "output": "instalador",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "NVX Project Manager",
+      "deleteAppDataOnUninstall": false,
+      "installerLanguages": [
+        "pt_BR"
+      ],
+      "language": "1046",
+      "artifactName": "NVX-Project-Manager-Setup-${version}.exe"
+    }
+  },
+  "devDependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^10.0.7",
+    "electron": "^45.4.1",
+    "electron-builder": "^26.18.0",
+    "esbuild": "^0.28.2",
+    "express": "^5.3.0",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.9",
+    "lucide-react": "^1.79.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.6",
+    "recharts": "^3.11.1",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1",
+    "zod": "^4.6.7"
+  }
+}

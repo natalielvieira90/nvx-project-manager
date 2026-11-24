@@ -1,0 +1,15 @@
+Copyright (c) 2026 NVX Digital. Todos os direitos reservados.
+
+Este repositório é disponibilizado publicamente apenas para consulta e avaliação
+(portfólio). Nenhuma permissão é concedida para copiar, modificar, distribuir,
+sublicenciar, vender ou usar este software, no todo ou em parte, sem autorização
+prévia e por escrito do titular.
+
+A marca, o logotipo e os demais elementos da identidade visual NVX Digital
+(arquivos em src/assets/marca, public/favicon.svg e build/icon.png) são de uso
+exclusivo da NVX Digital.
+
+Componentes de terceiros mantêm suas próprias licenças, entre eles:
+- Space Grotesk (src/assets/fontes/OFL-SpaceGrotesk.txt) — SIL Open Font License 1.1;
+- Inter, React, Electron, Express, jsPDF e demais dependências listadas em
+  package.json — conforme as licenças de cada pacote.
